@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Laptop - By Bernando Dan AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #6e8efb, #0cf01f);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .hero {
+            height: 60vh;
+            background: url("bck1.jpg") no-repeat center center;
+            background-size: cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff7b25, #ff5e3a);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(255, 94, 58, 0.4);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 94, 58, 0.6);
+        }
+        
+        .products-section {
+            padding: 4rem 0;
+            background-color: #fff;
+            position: relative;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: #333;
+        }
+        .products-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+        .parallax-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: url("images.jpg") repeat-x;
+            background-size: 50% 100%;
+            z-index: 1;
+            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        .products-slider {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+            height: 100%;
+            align-items: center;
+        }
+        .product-card {
+            min-width: 300px;
+            height: 400px;
+            background: white;
+            margin: 0 15px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        .product-image-container {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .product-image {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        .product-info {
+            padding: 20px;
+        }
+        .product-name {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .product-specs {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #6e8efb;
+            margin-bottom: 1rem;
+        }
+        .buy-button {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        .buy-button:hover {
+            opacity: 0.9;
+        }
+        .testimonials {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f6f7f9, #e9ecef);
+        }
+        .testimonial-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .testimonial::before {
+            content: '"';
+            font-size: 5rem;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            color: #6e8efb;
+            opacity: 0.1;
+            font-family: serif;
+        }
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        .author-info h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        .author-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #888;
+            background: none;
+            border: none;
+        }
+        .modal-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #333;
+        }
+        .modal-form-group {
+            margin-bottom: 20px;
+        }
+        .modal-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .modal-form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .modal-submit-button {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        .modal-submit-button:hover {
+            opacity: 0.9;
+        }
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #4a6491);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        .footer-link:hover {
+            opacity: 1;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .product-card {
+                min-width: 250px;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .product-card {
+                min-width: 200px;
+                height: 350px;
+            }
+            .product-image-container {
+                height: 150px;
+            }
+        }
+        .calculator-center {
+            margin: 32px auto 32px auto !important;
+            float: none !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 8px 32px rgba(110,142,251,0.13);
+            border: 1px solid #e0e7ff;
+            background: #fafdff;
+        }
+        .calculator-title {
+            text-align: center;
+            color: #6e8efb;
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+        }
+        .calculator-form .form-group {
+            margin-bottom: 18px;
+            width: 100%;
+        }
+        .calculator-form label {
+            color: #444;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .calculator-form select,
+        .calculator-form input[type="number"] {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #bfc9e0;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #fff;
+            margin-top: 4px;
+            transition: border 0.2s;
+        }
+        .calculator-form select:focus,
+        .calculator-form input[type="number"]:focus {
+            border: 1.5px solid #6e8efb;
+            outline: none;
+        }
+        #hitung-btn {
+            margin: 0 auto;
+            display: block;
+            width: 100%;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        .calculator-result {
+            margin-top: 22px;
+            background: #eaf1ff;
+            border-radius: 8px;
+            padding: 18px 20px;
+            box-shadow: 0 2px 8px rgba(110,142,251,0.07);
+            min-width: 240px;
+        }
+        .total-price p {
+            margin: 6px 0;
+            font-size: 1.08rem;
+            color: #333;
+        }
+        .total-price strong {
+            color: #ff5e3a;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">ULTRA KOMPUTER</div>
+        <div class="tagline">Komputasi Generasi Berikutnya</div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Tingkatkan Produktivitas Anda</h1>
+            <p>Rasakan performa komputasi terbaik dengan koleksi laptop premium kami. Dirancang untuk profesional, kreator, dan gamer.</p>
+            <button class="cta-button" id="open-registration">Dapatkan Laptop Anda Sekarang</button>
+        </div>
+    </section>
+
+    <section class="products-section">
+        <h2 class="section-title">Laptop Premium Kami</h2>
+        <div class="products-container">
+            <div class="parallax-background" id="parallax-bg"></div>
+            <div class="products-slider" id="products-slider">
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="foto1.png" alt=" Legion 5i 15IRX9" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name"> Legion 5i 15IRX9</div>
+                        <div class="product-specs">Intel 5i, 24 GB RAM, 512GB SSD</div>
+                        <div class="product-price">Rp 22.000.000</div>
+                        <button class="buy-button">Beli Sekarang</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="foto2.jpg" alt="Gaming Beast X" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">ASUS ROG Zephyrus G14 </div>
+                        <div class="product-specs">Ryzen 9 8945HS 32GB 1TB SSD RTX4060 </div>
+                        <div class="product-price">Rp 34.000.000</div>
+                        <button class="buy-button">Beli Sekarang</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="foto3.jpg" alt="Business Elite 14" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Laptop MSI Katana 15</div>
+                        <div class="product-specs">B13VFK Core i7 Gen13 16GB 1TBSSD RTX4060</div>
+                        <div class="product-price">Rp 21.000.000</div>
+                        <button class="buy-button">Beli Sekarang</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="foto4.jpg" alt="Student Laptop 13" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">ASUS VIVOBOOK PRO 15 OLED"</div>
+                        <div class="product-specs">Intel Core Ultra 7 155H  RAM 24GB SSD 1TB RTX4050</div>
+                        <div class="product-price">Rp 14.000.000</div>
+                        <button class="buy-button">Beli Sekarang</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="foto5.jpg" alt="Creative Studio 16" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">ASUS ROG Strix G15 "</div>
+                        <div class="product-specs"> 8GB, 512GB SSD ,RTX3050</div>
+                        <div class="product-price">Rp 12.100.000</div>
+                        <button class="buy-button">Beli Sekarang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="testimonials">
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <div class="testimonial-text" style="color:#4a6491;">
+                    ASUS VIVOBOOK PRO 15 saya bekerja dengan sempurna untuk kebutuhan editing video sehari-hari. Ringan tapi sangat bertenaga!
+                </div>
+                <div class="testimonial-author">
+                    <img src="user5.jpg" alt="Andi" class="author-img">
+                    <div class="author-info">
+                        <h4 style="color:#6e8efb;">Vonzy F</h4>
+                        <p style="color:#ff7b25;">Content Creator</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-text" style="color:#4a6491;">
+                    Pelayanan sangat ramah dan pengiriman cepat. Laptop Gaming benar-benar memuaskan untuk main game berat!
+                </div>
+                <div class="testimonial-author">
+                    <img src="user1.jpg" alt="Budi" class="author-img">
+                    <div class="author-info">
+                        <h4 style="color:#6e8efb;">windah batu bara</h4>
+                        <p style="color:#ff7b25;">Gamer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-text" style="color:#4a6491;">
+                    Laptop Business Elite 14 sangat ringan dan baterainya awet. Cocok sekali untuk kerja remote!
+                </div>
+                <div class="testimonial-author">
+                    <img src="user2.jpg" alt="Citra" class="author-img">
+                    <div class="author-info">
+                        <h4 style="color:#6e8efb;">ronaldo</h4>
+                        <p style="color:#ff7b25;">Freelancer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-text" style="color:#4a6491;">
+                    Saya sangat puas dengan Studio Kreatif. Proses desain grafis jadi lebih lancar dan layar sangat tajam!
+                </div>
+                <div class="testimonial-author">
+                    <img src="user3.jpg" alt="Dewanto" class="author-img">
+                    <div class="author-info">
+                        <h4 style="color:#6e8efb;">Fionyy</h4>
+                        <p style="color:#ff7b25;">Desainer Grafis</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-text" style="color:#4a6491;">
+                    Laptop nya sangat membantu video-video saya. Harganya terjangkau dan performanya oke!
+                </div>
+                <div class="testimonial-author">
+                    <img src="user6.jpg" alt="Eka" class="author-img">
+                    <div class="author-info">
+                        <h4 style="color:#6e8efb;">Mas Fuad</h4>
+                        <p style="color:#ff7b25;">Vloger</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="registration-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="close-modal">&times;</button>
+            <h2 class="modal-title">Formulir Registrasi</h2>
+            <form id="registration-form">
+                <div class="modal-form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" required placeholder="Masukkan nama lengkap Anda">
+                </div>
+                <div class="modal-form-group">
+                    <label for="address">Alamat Lengkap</label>
+                    <input type="text" id="address" required placeholder="Masukkan alamat lengkap">
+                </div>
+                <div class="modal-form-group">
+                    <label for="phone">Nomor HP/WhatsApp</label>
+                    <input type="tel" id="phone" required placeholder="Masukkan nomor yang bisa dihubungi">
+                </div>
+                <div class="modal-form-group">
+                    <label for="email">Alamat Email</label>
+                    <input type="email" id="email" required placeholder="Masukkan alamat email">
+                </div>
+                <button type="submit" class="modal-submit-button">Kirim Registrasi</button>
+            </form>
+        </div>
+    </div>
+
+    <section class="calculator-section">
+        <div class="calculator-container calculator-center">
+            <h2 class="calculator-title">Hitung Total Pembelian</h2>
+            <form class="calculator-form" id="calculator-form">
+                <div class="form-group">
+                    <label for="product"><strong>Pilih Produk</strong></label>
+                    <select id="product" required>
+                        <option value="21000000">Legion 5i 15IRX9 - Rp 21.000.000</option>
+                        <option value="34000000">ASUS ROG Zephyrus G14- Rp 34.000.000</option>
+                        <option value="23000000">Laptop MSI Katana 15- Rp 23.000.000</option>
+                        <option value="14000000">ASUS VIVOBOOK PRO 15 OLED - Rp 14.000.000</option>
+                        <option value="12000000">ASUS ROG Strix G15" - Rp 12.000.000</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity"><strong>Jumlah Unit</strong></label>
+                    <input type="number" id="quantity" min="1" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="insurance"><strong>Asuransi (opsional)</strong></label>
+                    <select id="insurance">
+                        <option value="0">Tanpa Asuransi</option>
+                        <option value="500000">Asuransi 1 Tahun - Rp 500.000</option>
+                        <option value="900000">Asuransi 2 Tahun - Rp 900.000</option>
+                    </select>
+                </div>
+                <button type="submit" class="buy-button" id="hitung-btn">Hitung Total + Ongkir</button>
+            </form>
+            <div class="calculator-result" id="calculator-result" style="display: none;">
+                <div class="total-price" id="total-price"></div>
+                <p style="margin-top:10px; color:#6e8efb; font-weight:600;">
+                    Termasuk ongkos kirim ke seluruh Indonesia
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const productsSlider = document.getElementById('products-slider');
+        const cardWidth = 300;
+        const margin = 30;
+
+        function moveSliderLeft() {
+            const firstCard = productsSlider.firstElementChild;
+            productsSlider.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)';
+            productsSlider.style.transform = `translateX(-${cardWidth + margin}px)`;
+            setTimeout(() => {
+                productsSlider.appendChild(firstCard);
+                productsSlider.style.transition = 'none';
+                productsSlider.style.transform = 'translateX(0)';
+            }, 500);
+        }
+
+        let sliderInterval = setInterval(moveSliderLeft, 3000);
+        productsSlider.addEventListener('mouseenter', () => {
+            clearInterval(sliderInterval);
+        });
+        productsSlider.addEventListener('mouseleave', () => {
+            sliderInterval = setInterval(moveSliderLeft, 3000);
+        });
+
+        const registrationModal = document.getElementById('registration-modal');
+        const openRegistrationBtn = document.getElementById('open-registration');
+        const closeModalBtn = document.getElementById('close-modal');
+        const registrationForm = document.getElementById('registration-form');
+
+        openRegistrationBtn.addEventListener('click', () => {
+            registrationModal.style.display = 'flex';
+        });
+        closeModalBtn.addEventListener('click', () => {
+            registrationModal.style.display = 'none';
+        });
+        registrationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Terima kasih telah mendaftar! Kami akan segera menghubungi Anda.');
+            registrationModal.style.display = 'none';
+            registrationForm.reset();
+        });
+        window.addEventListener('click', (event) => {
+            if (event.target === registrationModal) {
+                registrationModal.style.display = 'none';
+            }
+        });
+
+        const calculatorForm = document.getElementById('calculator-form');
+        const totalPriceDiv = document.getElementById('total-price');
+        const calculatorResultDiv = document.getElementById('calculator-result');
+
+        calculatorForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const productPrice = parseInt(document.getElementById('product').value);
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const insurance = parseInt(document.getElementById('insurance').value);
+            const totalPrice = (productPrice + insurance) * quantity;
+            totalPriceDiv.innerHTML = `Total Harga: <strong>Rp ${totalPrice.toLocaleString()}</strong>`;
+            calculatorResultDiv.style.display = 'block';
+        });
+
+        const testimonialContainer = document.querySelector('.testimonial-container');
+        const testimonialCards = document.querySelectorAll('.testimonial');
+        let testimonialInterval;
+
+        if (testimonialContainer && testimonialCards.length > 1) {
+            testimonialContainer.style.display = 'flex';
+            testimonialContainer.style.overflow = 'hidden';
+            testimonialCards.forEach(card => {
+                card.style.minWidth = '100%';
+                card.style.marginRight = '0';
+                card.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)';
+            });
+
+            function moveTestimonialLeft() {
+                const firstCard = testimonialContainer.firstElementChild;
+                testimonialContainer.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                testimonialContainer.style.transform = 'translateX(-100%)';
+
+                setTimeout(() => {
+                    testimonialContainer.appendChild(firstCard);
+                    testimonialContainer.style.transition = 'none';
+                    testimonialContainer.style.transform = 'translateX(0)';
+                }, 500);
+            }
+
+            testimonialInterval = setInterval(moveTestimonialLeft, 3500);
+
+            testimonialContainer.addEventListener('mouseenter', () => {
+                clearInterval(testimonialInterval);
+            });
+            testimonialContainer.addEventListener('mouseleave', () => {
+                testimonialInterval = setInterval(moveTestimonialLeft, 3500);
+            });
+        }
+
+   
+        document.querySelectorAll('.buy-button').forEach((btn, idx) => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('.calculator-section').scrollIntoView({ behavior: 'smooth' });
+                const productSelect = document.getElementById('product');
+                if (productSelect) {
+                    productSelect.selectedIndex = idx;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
