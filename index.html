@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Laptop - By Bernando Dan AI</title>
+    <title>Premium Laptop - By Bernando</title>
     <style>
         * {
             margin: 0;
@@ -17,7 +17,7 @@
             overflow-x: hidden;
         }
         header {
-            background: linear-gradient(135deg, #6e8efb, #0cf01f);
+            background: linear-gradient(135deg, #6e8efb, #0bc611);
             color: white;
             padding: 1.5rem 0;
             text-align: center;
@@ -537,6 +537,10 @@
                     </div>
                 </div>
             </div>
+            <div class="slider-controls">
+                <button id="prev-product" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);z-index:3;background:#6e8efb;color:#fff;border:none;border-radius:50%;width:40px;height:40px;font-size:1.5rem;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.12);">&lt;</button>
+                <button id="next-product" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);z-index:3;background:#6e8efb;color:#fff;border:none;border-radius:50%;width:40px;height:40px;font-size:1.5rem;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.12);">&gt;</button>
+            </div>
         </div>
     </section>
 
@@ -670,6 +674,7 @@
     </section>
 
     <script>
+        // Slider produk otomatis ke kiri, keluar dari kanan
         const productsSlider = document.getElementById('products-slider');
         const cardWidth = 300;
         const margin = 30;
@@ -693,6 +698,7 @@
             sliderInterval = setInterval(moveSliderLeft, 3000);
         });
 
+        // Modal registrasi
         const registrationModal = document.getElementById('registration-modal');
         const openRegistrationBtn = document.getElementById('open-registration');
         const closeModalBtn = document.getElementById('close-modal');
@@ -716,6 +722,7 @@
             }
         });
 
+        // Kalkulator pembelian
         const calculatorForm = document.getElementById('calculator-form');
         const totalPriceDiv = document.getElementById('total-price');
         const calculatorResultDiv = document.getElementById('calculator-result');
@@ -730,6 +737,7 @@
             calculatorResultDiv.style.display = 'block';
         });
 
+        // SLIDER TESTIMONIAL OTOMATIS KE KIRI, KELUAR DARI KANAN
         const testimonialContainer = document.querySelector('.testimonial-container');
         const testimonialCards = document.querySelectorAll('.testimonial');
         let testimonialInterval;
@@ -765,17 +773,40 @@
             });
         }
 
-   
-        document.querySelectorAll('.buy-button').forEach((btn, idx) => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
+        // Fitur: Klik produk langsung ke kalkulator & pilih produk sesuai
+        document.querySelectorAll('.product-card').forEach((card, idx) => {
+            card.addEventListener('click', function () {
+                // Scroll ke kalkulator
                 document.querySelector('.calculator-section').scrollIntoView({ behavior: 'smooth' });
+                // Pilih produk di dropdown sesuai urutan kartu
                 const productSelect = document.getElementById('product');
-                if (productSelect) {
-                    productSelect.selectedIndex = idx;
-                }
+                productSelect.selectedIndex = idx < productSelect.options.length ? idx : 0;
             });
         });
+
+        // Navigasi slider produk
+        const prevProductBtn = document.getElementById('prev-product');
+        const nextProductBtn = document.getElementById('next-product');
+
+        if (prevProductBtn && nextProductBtn) {
+            let currentIndex = 0;
+            const totalProducts = document.querySelectorAll('.product-card').length;
+
+            function updateSliderPosition() {
+                const offset = -(currentIndex * (cardWidth + margin));
+                productsSlider.style.transform = `translateX(${offset}px)`;
+            }
+
+            prevProductBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalProducts - 1;
+                updateSliderPosition();
+            });
+
+            nextProductBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex < totalProducts - 1) ? currentIndex + 1 : 0;
+                updateSliderPosition();
+            });
+        }
     </script>
 </body>
 </html>
